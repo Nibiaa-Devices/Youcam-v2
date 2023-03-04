@@ -35,7 +35,7 @@ def monitor_stream():
             with open(stream_key_file, "r") as fp:
                 stream_key = fp.read().strip()
             start_stream(stream_key)
-        time.sleep(1)
+        time.sleep(15)
 
 @app.route('/', methods=['GET'])
 def home():
