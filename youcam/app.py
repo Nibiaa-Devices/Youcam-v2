@@ -14,7 +14,7 @@ def start_stream(stream_key):
     # Stop the existing stream process, if there is one
     stop_stream()
     # Start the new stream process with the given stream key
-    command = "raspivid -o - -t 0 -n -w 1080 -h 720 -fps 25 -b 2000000 | ffmpeg -re -ar 44100 -ac 2 -acodec pcm_s16le -f s16le -ac 2 -i /dev/zero -f h264 -i - -vcodec copy -acodec aac -ab 128k -g 50 -strict experimental -f flv rtmp://a.rtmp.youtube.com/live2/" + stream_key
+    command = "raspivid -o - -t 0 -n -w 1080 -h 720 -fps 25 -b 1000000 | ffmpeg -re -ar 44100 -ac 2 -acodec pcm_s16le -f s16le -ac 2 -i /dev/zero -f h264 -i - -vcodec copy -acodec aac -ab 128k -g 50 -strict experimental -f flv rtmp://a.rtmp.youtube.com/live2/" + stream_key
     stream_process = subprocess.Popen(command, shell=True)
     print("Stream started successfully.")
 
